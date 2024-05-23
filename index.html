@@ -1,37 +1,365 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Page with Nav Bar</title>
     <link rel="stylesheet" href="site.css">
-    <title>Outdoor Adventures</title>
 </head>
-
-
 <body>
-    <div class="banner">
-        <video autoplay loop muted plays-inline>
-            <source src="images/8552282-hd_1920_1080_30fps.mp4" type="video/mp4">
+    <div class="navbar">
+        <a href="#home" onclick="showSection('home')">Home</a>
+        <a href="#mountains" onclick="showSection('mountains')">Mountains</a>
+        <a href="#national-parks" onclick="showSection('national-parks')">National Parks</a>
+    </div>
+    <div class="container">
+        <video class="video-background" autoplay muted loop>
+            <source src="images/8552832-hd_1920_1080_30fps.mp4" type="video/mp4">
+            Your browser does not support the video tag.
         </video>
-        <div class="navbar">
-            <img src="images/outdoors.webp" class="logo">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="nationalparks.html">National Parks</a></li>
-                <li><a href="mountains.html">Mountains</a></li>
-            </ul>
-        </div>
-        <div class="content">
-            <h1>Outdoor Adventures</h1>
-            <div>
-                <button type="button"><a href="mountains.html">Explore</a></button>
+        <div class="overlay"></div>
+        
+        <!-- Home Section -->
+        <div id="home" class="section active">
+            <div class="center-text fadeIn">
+                <h1>Outdoor Adventures</h1>
+                <p class="description">Discover the beauty and excitement of outdoor adventures. Explore majestic mountains, serene national parks, and embark on unforgettable journeys into the wild. Nature awaits!</p>
+                <a href="#explore" class="explore-button" onclick="explore()">Explore</a>
             </div>
         </div>
+
+        <!-- Mountains Section -->
+        <div id="mountains" class="section">
+            <h1>Mountains</h1>
+            <p>Experience the grandeur of towering peaks and rugged landscapes. Mountains offer breathtaking views, challenging hikes, and a sense of adventure that calls to the wild at heart.</p>
+            <img id="mountainImage" src="your-mountain-image-url-here.jpg" alt="Mountains" class="img">
+            <h2>Mountain Search</h2>
+            <select class="dropdown" id="mountainDropdown" onchange="showSelectedMountain()">
+                <option value="">Select a Mountain</option>
+                <option value="mt-washington">Mt. Washington</option>
+                <option value="mt-adams">Mt. Adams</option>
+                <option value="mt-jefferson">Mt. Jefferson</option>
+                <option value="mt-monroe">Mt. Monroe</option>
+                <option value="mt-madison">Mt. Madison</option>
+                <option value="mt-lafayette">Mt. Lafayette</option>
+                <option value="mt-lincoln">Mt. Lincoln</option>
+                <option value="south-twin">South Twin</option>
+                <option value="carter-dome">Carter Dome</option>
+                <option value="mt-moosilauke">Mt. Moosilauke</option>
+                <option value="mt-eisenhower">Mt. Eisenhower</option>
+                <option value="north-twin">North Twin</option>
+                <option value="mt-carrigain">Mt. Carrigain</option>
+                <option value="mt-bond">Mt. Bond</option>
+                <option value="middle-carter">Middle Carter</option>
+                <option value="west-bond">West Bond</option>
+                <option value="mt-garfield">Mt. Garfield</option>
+                <option value="mt-liberty">Mt. Liberty</option>
+                <option value="south-carter">South Carter</option>
+                <option value="wildcat-mountain">Wildcat Mountain</option>
+                <option value="mt-hancock">Mt. Hancock</option>
+                <option value="south-kinsman">South Kinsman</option>
+                <option value="mt-field">Mt. Field</option>
+                <option value="mt-osceola">Mt. Osceola</option>
+                <option value="mt-flume">Mt. Flume</option>
+                <option value="south-hancock">South Hancock</option>
+                <option value="mt-pierce">Mt. Pierce</option>
+                <option value="north-kinsman">North Kinsman</option>
+                <option value="mt-willey">Mt. Willey</option>
+                <option value="bondcliff">Bondcliff</option>
+                <option value="zealand-mountain">Zealand Mountain</option>
+                <option value="north-tripyramid">North Tripyramid</option>
+                <option value="mt-cabot">Mt. Cabot</option>
+                <option value="east-osceola">East Osceola</option>
+                <option value="middle-tripyramid">Middle Tripyramid</option>
+                <option value="cannon-mountain">Cannon Mountain</option>
+                <option value="wildcat-d">Wildcat D</option>
+                <option value="mt-hale">Mt. Hale</option>
+                <option value="mt-jackson">Mt. Jackson</option>
+                <option value="mt-tom">Mt. Tom</option>
+                <option value="mt-moriah">Mt. Moriah</option>
+                <option value="mt-passaconaway">Mt. Passaconaway</option>
+                <option value="owls-head">Owl's Head</option>
+                <option value="galehead-mountain">Galehead Mountain</option>
+                <option value="mt-whiteface">Mt. Whiteface</option>
+                <option value="mt-waumbek">Mt. Waumbek</option>
+                <option value="mt-isolation">Mt. Isolation</option>
+                <option value="mt-tecumseh">Mt. Tecumseh</option>
+            </select>
+            <div id="mountainDetails"></div>
+        </div>
+
+     <!-- National Parks Section -->
+     <div id="national-parks" class="section">
+        <h1>National Parks</h1>
+        <p>National Parks preserve the natural beauty and cultural heritage of some of the most stunning landscapes. They provide a sanctuary for wildlife and a place for humans to reconnect with nature.</p>
+      
+        <h2>Location</h2>
+        <select class="dropdown">
+            <option value="">Select a Location</option>
+            <script>
+                const locationsArray = [
+                    "Alabama", "Alaska", "American Samoa", "Arizona", "Arkansas", "California", 
+                    "Colorado", "Connecticut", "Delaware", "DC", "Florida", "Georgia", "Guam", 
+                    "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", 
+                    "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", 
+                    "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", 
+                    "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", 
+                    "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Puerto Rico", "Rhode Island", 
+                    "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", 
+                    "Virgin Islands", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
+                ];
+                locationsArray.forEach(location => {
+                    document.write('<option value="' + location.toLowerCase().replace(/ /g, '-') + '">' + location + '</option>');
+                });
+            </script>
+        </select>
+        
+        <h2>Park Type</h2>
+        <select class="dropdown">
+            <option value="">Select Park Type</option>
+            <option value="national-park">National Park</option>
+            <option value="national-monument">National Monument</option>
+            <option value="recreation-area">Recreation Area</option>
+            <option value="scenic-trail">Scenic Trail</option>
+            <option value="battlefield">Battlefield</option>
+            <option value="historic">Historic</option>
+            <option value="memorial">Memorial</option>
+            <option value="preserve">Preserve</option>
+            <option value="island">Island</option>
+            <option value="river">River</option>
+            <option value="seashore">Seashore</option>
+            <option value="trail">Trail</option>
+            <option value="parkway">Parkway</option>
+        </select>
     </div>
+</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        function explore() {
+            showSection('mountains');
+        }
+
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                if (section.id === sectionId) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+        }
+
+        const mountainsInfo = {
+            "mt-washington": {
+                description: "Mount Washington (6,288 ft) is the highest peak in the Northeastern United States and is known for its extreme weather.",
+                image: "images/Washington-StoryImage_2.jpg"
+            },
+            "mt-adams": {
+                description: "Mount Adams (5,774 ft) is the second highest peak in New England, offering challenging trails and stunning views.",
+                image: "images/Adams-StoryImage_2.jpg"
+            },
+            "mt-jefferson": {
+                description: "Mount Jefferson (5,712 ft) is part of the Presidential Range and provides breathtaking panoramic views.",
+                image: "images/Jefferson-StoryImage_2.jpg"
+            },
+            "mt-monroe": {
+                description: "Mount Monroe (5,384 ft) features a relatively easy climb and beautiful vistas from its summit.",
+                image: "images/Monroe-StoryImage_2.jpg"
+            },
+            "mt-madison": {
+                description: "Mount Madison (5,367 ft) offers spectacular views and is known for its rugged terrain.",
+                image: "images/Madison-StoryImage_2.jpg"
+            },
+            "mt-lafayette": {
+                description: "Mount Lafayette (5,249 ft) is a popular hiking destination with stunning views of Franconia Ridge.",
+                image: "images/lafayette-StoryImage_2.jpg"
+            },
+            "mt-lincoln": {
+                description: "Mount Lincoln (5,089 ft) is part of the Franconia Ridge and offers sweeping views of the White Mountains.",
+                image: "images/Lincoln-StoryImage_2.jpg"
+            },
+            "south-twin": {
+                description: "South Twin Mountain (4,902 ft) is known for its spectacular views and challenging hike.",
+                image: "images/STwin-StoryImage_2.jpg"
+            },
+            "carter-dome": {
+                description: "Carter Dome (4,832 ft) offers beautiful views of the Presidential Range and is a favorite among hikers.",
+                image: "images/CDome-StoryImage.jpg"
+            },
+            "mt-moosilauke": {
+                description: "Mount Moosilauke (4,802 ft) is famous for its expansive views and alpine environment.",
+                image: "images/Moosilauke-StoryImage_2.jpg"
+            },
+            "mt-eisenhower": {
+                description: "Mount Eisenhower (4,780 ft) features a relatively gentle climb with stunning views.",
+                image: "images/Eisenhower-StoryImage.jpg"
+            },
+            "north-twin": {
+                description: "North Twin Mountain (4,761 ft) offers stunning views and is a part of the Twin Range.",
+                image: "images/NTwin-StoryImage_2.jpg"
+            },
+            "mt-carrigain": {
+                description: "Mount Carrigain (4,700 ft) offers panoramic views of the White Mountains from its summit tower.",
+                image: "images/Carrigain-StoryImage_2.jpg"
+            },
+            "mt-bond": {
+                description: "Mount Bond (4,698 ft) is known for its remote location and beautiful views.",
+                image: "images/Bond-StoryImage_3.jpg"
+            },
+            "middle-carter": {
+                description: "Middle Carter Mountain (4,610 ft) provides great views and a peaceful hiking experience.",
+                image: "images/MidCarter-StoryImage.jpg"
+            },
+            "west-bond": {
+                description: "West Bond (4,540 ft) is a remote peak with stunning views of the Pemigewasset Wilderness.",
+                image: "images/WBond-StoryImage.jpg"
+            },
+            "mt-garfield": {
+                description: "Mount Garfield (4,500 ft) features a challenging hike and breathtaking views from its summit.",
+                image: "images/Garfield-StoryImage.jpg"
+            },
+            "mt-liberty": {
+                description: "Mount Liberty (4,459 ft) offers incredible views of the surrounding peaks and valleys.",
+                image: "images/liberty-StoryImage_2.jpg"
+            },
+            "south-carter": {
+                description: "South Carter Mountain (4,430 ft) is known for its serene trails and beautiful vistas.",
+                image: "images/Carters-StoryI.jpg"
+            },
+            "wildcat-mountain": {
+                description: "Wildcat Mountain (4,422 ft) offers dramatic, close-up views of Carter Notch and Carter Dome from its summit.",
+                image: "images/Wildcat-StoryImage.jpg"
+            },
+            "mt-hancock": {
+                description: "Located at the southern border of the Pemigewasset Wilderness, Mt. Hancock is characterized by a long ridge with several peaks, most importantly the North Peak (4,420') and the South Peak (4,319'), also known as South Hancock.",
+                image: "images/Hancock-Story_2.jpg"
+            },
+            "south-kinsman": {
+                description: "South Kinsman Mountain (4,358 ft) offers stunning views and is part of the Kinsman Ridge.",
+                image: "images/SKinsman-StoryImage_2.jpg"
+            },
+            "mt-field": {
+                description: "Mount Field (4,340 ft) provides a beautiful summit and is part of the Willey Range.",
+                image: "images/Field-StoryImage.jpg"
+            },
+            "mt-osceola": {
+                description: "Mount Osceola (4,340 ft) is the highest peak in the Waterville Valley Region and offers great views of the Pemigewasset Wilderness to the north.",
+                image: "images/Osceola-StoryImage_2.jpg"
+            },
+            "mt-flume": {
+                description: "Mt. Flume (4,328'), a part of the popular and scenic Franconia Ridge, bears a sharp, rugged peak with excellent views of the surrounding area and an array of alpine plants.",
+                image: "images/Flume-StoryImage_2.jpg"
+            },
+            "south-hancock": {
+                description: "Located at the southern border of the Pemigewasset Wilderness, Mt. Hancock is characterized by a long ridge with several peaks, most importantly the North Peak (4,420') and the South Peak (4,319'), also known as South Hancock.",
+                image: "images/SHandcock-StoryImage.jpg"
+            },
+            "mt-pierce": {
+                description: "Mount Pierce (4,312 ft.), part of the southern Presidential Range, has a flat summit with a broad, open area on the east side that offers striking views of the surrounding area.",
+                image: "images/Pierce-StoryImg.jpg"
+            },
+            "north-kinsman": {
+                description: "North Kinsman (4,293') is the second highest peak on the Kinsman-Cannon Ridge. Ledges just below the wooded summit offer great views of Mt. Lafayette and Mt. Lincoln across Franconia Notch.",
+                image: "images/NKinsman-StoryImg_2.jpg"
+            },
+            "mt-willey": {
+                description: "Mt. Willey (4,285') is the second highest and southernmost mountain of the Willey Range, which also includes Mt. Field (4,340') and Mt. Tom (4,051').",
+                image: "images/Willey-StoryImg_2.jpg"
+            },
+            "bondcliff": {
+                description: "Bondcliff (4,265 ft.), along with neighboring Mt. Guyot and Mt. Bond, offers some of the most stunning views in the Whites, with virtually no sign of roads or buildings visible from the summit.",
+                image: "images/bond-StoryImage_3.jpg"
+            },
+            "zealand-mountain": {
+                description: "The summit of Zealand Mountain (4,260 feet) is wooded and viewless, but the trip is nonetheless worthwhile when hikers include a stop at the nearby Zeacliff outlook along the way.",
+                image: "images/Xeacliff-StoryImg_2.jpg"
+            },
+            "north-tripyramid": {
+                description: "The Tripyramid massif includes three peaks: North Tripyramid (4,180'), Middle Tripyramid (4,140'), and South Tripyramid (4,100'). The latter peak is not considered an official 4,000 footer because there is not a sufficient change in altitude between its neighboring peak.",
+                image: "images/Tripyramids-StoryImg.jpg"
+            },
+            "mt-cabot": {
+                description: "Mount Cabot (4,170 ft.) is the highest peak in New Hampshire's North Country, offering interesting views from the site of a former fire tower, just southeast of the summit.",
+                image: "images/Cabot-Storyimg.jpg"
+            },
+            "east-osceola": {
+                description: "Mt. Osceola (4,340') is the highest peak in the Waterville Valley Region and offers great views of the Pemigewasset Wilderness to the north. East Osceola (4,156') is the subordinate peak to Mt. Osceola.",
+                image: "images/EOsceola.jpg"
+            },
+            "middle-tripyramid": {
+                description: "The Tripyramid massif includes three peaks: North Tripyramid (4,180'), Middle Tripyramid (4,140'), and South Tripyramid (4,100'). The latter peak is not considered an official 4,000 footer because there is not a sufficient change in altitude between its neighboring peak.",
+                image: "images/M-Tripyramids-StoryImg.jpg"
+            },
+            "cannon-mountain": {
+                description: "Cannon Mountain (4,100') is also known as Profile Mountain, referring to the magnificent profile of the Old Man of the Mountain, an infamous formation of three ledges on the east cliff that collapsed in May 2003.",
+                image: "images/Cannon-StoryImg_2.jpg"
+            },
+            "wildcat-d": {
+                description: "Wildcat Mountain (4,422'), located in the Carter-Moriah Range, offers dramatic, close-up views of Carter Notch and Carter Dome from its summit. Wildcat's D Peak (4,062'), home to Wildcat Ski Area, is considered an independent 4,000-footer and offers excellent views of Mt. Washington and the Presidential Range from an observation tower.",
+                image: "images/WildcatD-StoryImg.jpg"
+            },
+            "mt-hale": {
+                description: "Mount Hale (4,054'), one of the Little River Mountains offers hikers an easy hike.",
+                image: "images/Hale-StoryImg.jpg"
+            },
+            "mt-jackson": {
+                description: "Mount Jackson (4,052 ft.), part of the southern Presidential Range, has a square, ledgy summit that offers stunning views of the surrounding Presidentials.",
+                image: "images/Jackson-StoryImg.jpg"
+            },
+            "mt-tom": {
+                description: "Mt. Tom (4,051') is the northern most peak of the Willey Range, which rises from the western boundary of Crawford Notch State Park.",
+                image: "images/Tom-StoryImg.jpg"
+            },
+            "mt-moriah": {
+                description: "A part of the Carter-Moriah Range, Mount Moriah (4,049 ft.), boasts a ledgy summit with views of the surrounding area.",
+                image: "images/Moriah-StoryImg.jpg"
+            },
+            "mt-passaconaway": {
+                description: "Mt. Passaconaway (4,043'), the easternmost 4,000 footer of the Sandwich Range Wilderness, shares a prominent ridge with Mt. Whiteface (4,020'). A lookout ledge just below Mt. Passaconaway's wooded summit offers great views of the Tripyramid massif to the west and South Hancock (4,319') and Mt. Carrigain (4,700') to the north.",
+                image: "images/Passaconoway-StoryImg.jpg"
+            },
+            "owls-head": {
+                description: "Owl's Head Mountain (4,025 feet), occupies a narrow valley created by the Twin-Bond Range to the east and the Franconia Range to the west. More than ten 4,000s surround Owl's Head. Needless to say, it is one of the more remote major summits in the White Mountains.",
+                image: "images/OwlsHead-StoryImg.jpg"
+            },
+            "galehead-mountain": {
+                description: "Galehead Mountain (4,024 feet), a part of the Twin Range, offers views of nearby North and South Twin from the Frost Trail.",
+                image: "images/Galehead-Storyimg.jpg"
+            },
+            "mt-whiteface": {
+                description: "Mt. Whiteface (4020') shares a prominent ridge with Mt. Passaconaway (4,043') the easternmost 4,000 footer of the Sandwich Range Wilderness. Lookout ledges south of Mt. Whiteface's wooded summit offer great views of New Hampshire's Lakes Region.",
+                image: "images/Whiteface-StoryImage.jpg"
+            },
+            "mt-waumbek": {
+                description: "Mt. Waumbek (4,006 ft.), is the highest peak in the Pliny Range of New Hampshire's North Country, offering views to the east just beyond the summit, along the Kilkenny Ridge Trail.",
+                image: "images/.jpg"
+            },
+            "mt-isolation": {
+                description: "Mount Isolation (4,003 ft.) is the highest peak of the Montalban Ridge, a subsidiary of the Presidentials, and offers stunning views of the Presidentials - one of the finest views in the White Mountains.",
+                image: "images/Isolation-StoryImage.jpg"
+            },
+            "mt-tecumseh": {
+                description: "Mt. Tecumseh (4,003') is the shortest official 4,000 footer and home to Waterville Valley ski area. Views to the immediate north include Mt. Osceola (4,340'), the highest peak in the region. East, across the valley, is the Tripyramid Massif, which includes North Tripyramid (4,180') and Middle Tripyramid (4,140').",
+                image: "images/Tecumseh-Storyimg.jpg"
+            }
+        };
+
+        function showSelectedMountain() {
+            const selectedMountain = document.getElementById("mountainDropdown").value;
+            const mountainDetailsDiv = document.getElementById("mountainDetails");
+            const mountainImage = document.getElementById("mountainImage");
+
+            if (selectedMountain) {
+                mountainDetailsDiv.textContent = mountainsInfo[selectedMountain].description;
+                mountainImage.src = mountainsInfo[selectedMountain].image;
+                mountainImage.alt = selectedMountain;
+            } else {
+                mountainDetailsDiv.textContent = "";
+                mountainImage.src = "your-mountain-image-url-here.jpg";
+                mountainImage.alt = "Mountains";
+            }
+        }
+    </script>
 </body>
-
 </html>

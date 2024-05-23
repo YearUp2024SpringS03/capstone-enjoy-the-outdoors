@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Page with Nav Bar</title>
+   <link rel="stylesheet" href="site.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="#home" onclick="showSection('home')">Home</a>
+        <a href="#mountains" onclick="showSection('mountains')">Mountains</a>
+        <a href="#national-parks" onclick="showSection('national-parks')">National Parks</a>
+    </div>
+    <div class="container">
+        <video class="video-background" autoplay muted loop>
+            <source src="images/8552832-hd_1920_1080_30fps.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="overlay"></div>
+        
+        <!-- Home Section -->
+        <div id="home" class="section active">
+            <div class="center-text fadeIn">
+                <h1>Outdoor Adventures</h1>
+                <p class="description">Discover the beauty and excitement of outdoor adventures. Explore majestic mountains, serene national parks, and embark on unforgettable journeys into the wild. Nature awaits!</p>
+                <a href="#explore" class="explore-button" onclick="explore()">Explore</a>
+            </div>
+        </div>
+
+        <!-- Mountains Section -->
+        <div id="mountains" class="section">
+            <h1>Mountains</h1>
+            <p>Experience the grandeur of towering peaks and rugged landscapes. Mountains offer breathtaking views, challenging hikes, and a sense of adventure that calls to the wild at heart.</p>
+            <img src="your-mountain-image-url-here.jpg" alt="Mountains" class="img">
+            <h2>Mountain Search</h2>
+            <select class="dropdown" id="mountainDropdown" onchange="showSelectedMountain()">
+                <option value="">Select a Mountain</option>
+                <option value="mt-washington">Mt. Washington</option>
+                <option value="mt-adams">Mt. Adams</option>
+                <option value="mt-jefferson">Mt. Jefferson</option>
+                <option value="mt-monroe">Mt. Monroe</option>
+                <option value="mt-madison">Mt. Madison</option>
+                <option value="mt-lafayette">Mt. Lafayette</option>
+                <option value="mt-lincoln">Mt. Lincoln</option>
+                <option value="south-twin">South Twin</option>
+                <option value="carter-dome">Carter Dome</option>
+                <option value="mt-moosilauke">Mt. Moosilauke</option>
+                <option value="mt-eisenhower">Mt. Eisenhower</option>
+                <option value="north-twin">North Twin</option>
+                <option value="mt-carrigain">Mt. Carrigain</option>
+                <option value="mt-bond">Mt. Bond</option>
+                <option value="middle-carter">Middle Carter</option>
+                <option value="west-bond">West Bond</option>
+                <option value="mt-garfield">Mt. Garfield</option>
+                <option value="mt-liberty">Mt. Liberty</option>
+                <option value="south-carter">South Carter</option>
+                <option value="wildcat-mountain">Wildcat Mountain</option>
+                <option value="mt-hancock">Mt. Hancock</option>
+                <option value="south-kinsman">South Kinsman</option>
+                <option value="mt-field">Mt. Field</option>
+                <option value="mt-osceola">Mt. Osceola</option>
+                <option value="mt-flume">Mt. Flume</option>
+                <option value="south-hancock">South Hancock</option>
+                <option value="mt-pierce">Mt. Pierce</option>
+                <option value="north-kinsman">North Kinsman</option>
+                <option value="mt-willey">Mt. Willey</option>
+                <option value="bondcliff">Bondcliff</option>
+                <option value="zealand-mountain">Zealand Mountain</option>
+                <option value="north-tripyramid">North Tripyramid</option>
+                <option value="mt-cabot">Mt. Cabot</option>
+                <option value="east-osceola">East Osceola</option>
+                <option value="middle-tripyramid">Middle Tripyramid</option>
+                <option value="cannon-mountain">Cannon Mountain</option>
+                <option value="wildcat-d">Wildcat D</option>
+                <option value="mt-hale">Mt. Hale</option>
+                <option value="mt-jackson">Mt. Jackson</option>
+                <option value="mt-tom">Mt. Tom</option>
+                <option value="mt-moriah">Mt. Moriah</option>
+                <option value="mt-passaconaway">Mt. Passaconaway</option>
+                <option value="owls-head">Owl's Head</option>
+                <option value="galehead-mountain">Galehead Mountain</option>
+                <option value="mt-whiteface">Mt. Whiteface</option>
+                <option value="mt-waumbek">Mt. Waumbek</option>
+                <option value="mt-isolation">Mt. Isolation</option>
+                <option value="mt-tecumseh">Mt. Tecumseh</option>
+            </select>
+            <div id="mountainDetails"></div>
+        </div>
+        
+        <!-- National Parks Section -->
+        <div id="national-parks" class="section">
+            <h1>National Parks</h1>
+            <p>National Parks preserve the natural beauty and cultural heritage of some of the most stunning landscapes. They provide a sanctuary for wildlife and a place for humans to reconnect with nature.</p>
+          
+            <h2>Location</h2>
+            <select class="dropdown">
+                <option value="">Select a Location</option>
+                <script>
+                    const locationsArray = [
+                        "Alabama", "Alaska", "American Samoa", "Arizona", "Arkansas", "California", 
+                        "Colorado", "Connecticut", "Delaware", "DC", "Florida", "Georgia", "Guam", 
+                        "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", 
+                        "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", 
+                        "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", 
+                        "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", 
+                        "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Puerto Rico", "Rhode Island", 
+                        "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", 
+                        "Virgin Islands", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
+                    ];
+                    locationsArray.forEach(location => {
+                        document.write('<option value="' + location.toLowerCase().replace(/ /g, '-') + '">' + location + '</option>');
+                    });
+                </script>
+            </select>
+            
+            <h2>Park Type</h2>
+            <select class="dropdown">
+                <option value="">Select Park Type</option>
+                <option value="national-park">National Park</option>
+                <option value="national-monument">National Monument</option>
+                <option value="recreation-area">Recreation Area</option>
+                <option value="scenic-trail">Scenic Trail</option>
+                <option value="battlefield">Battlefield</option>
+                <option value="historic">Historic</option>
+                <option value="memorial">Memorial</option>
+                <option value="preserve">Preserve</option>
+                <option value="island">Island</option>
+                <option value="river">River</option>
+                <option value="seashore">Seashore</option>
+                <option value="trail">Trail</option>
+                <option value="parkway">Parkway</option>
+            </select>
+        </div>
+    </div>
+
+    <script>
+        function explore() {
+            alert('Exploring the National Parks!');
+        }
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        const mountainsInfo = {
+            "mt-washington": "Mount Washington is the highest peak in the Northeastern United States at 6,288.2 ft.",
+            "mt-adams": "Mount Adams is the second-highest mountain in New Hampshire, with an elevation of 5,774 ft.",
+            "mt-jefferson": "Mount Jefferson is a prominent peak in the White Mountains, with an elevation of 5,712 ft.",
+            "mt-monroe": "Mount Monroe is a peak in the Presidential Range of the White Mountains, with an elevation of 5,384 ft.",
+            "mt-madison": "Mount Madison is a peak in the Presidential Range, with an elevation of 5,367 ft.",
+            "mt-lafayette": "Mount Lafayette is a 5,249 ft mountain in the Franconia Range of the White Mountains.",
+            "mt-lincoln": "Mount Lincoln is a 5,089 ft peak in the Franconia Range of the White Mountains.",
+            "south-twin": "South Twin Mountain is one of the highest peaks in the Twin Range of the White Mountains, with an elevation of 4,902 ft.",
+            "carter-dome": "Carter Dome is a mountain located in the Carter-Moriah Range, with an elevation of 4,832 ft.",
+            "mt-moosilauke": "Mount Moosilauke is a 4,802 ft mountain in the White Mountains.",
+            "mt-eisenhower": "Mount Eisenhower is a 4,780 ft peak in the Presidential Range of the White Mountains.",
+            "north-twin": "North Twin Mountain is one of the major peaks in the Twin Range, with an elevation of 4,761 ft.",
+            "mt-carrigain": "Mount Carrigain is a 4,700 ft mountain in the White Mountains.",
+            "mt-bond": "Mount Bond is a 4,698 ft peak in the White Mountains.",
+            "middle-carter": "Middle Carter Mountain is a 4,610 ft peak in the Carter-Moriah Range.",
+            "west-bond": "West Bond is a 4,540 ft peak in the White Mountains.",
+            "mt-garfield": "Mount Garfield is a 4,500 ft peak in the Franconia Range.",
+            "mt-liberty": "Mount Liberty is a 4,459 ft peak in the Franconia Range.",
+            "south-carter": "South Carter Mountain is a 4,430 ft peak in the Carter-Moriah Range.",
+            "wildcat-mountain": "Wildcat Mountain is a 4,422 ft peak in the White Mountains.",
+            "mt-hancock": "Mount Hancock is a 4,420 ft peak in the White Mountains.",
+            "south-kinsman": "South Kinsman Mountain is a 4,358 ft peak in the Kinsman Range.",
+            "mt-field": "Mount Field is a 4,340 ft peak in the Willey Range.",
+            "mt-osceola": "Mount Osceola is a 4,340 ft peak in the White Mountains.",
+            "mt-flume": "Mount Flume is a 4,328 ft peak in the Franconia Range.",
+            "south-hancock": "South Hancock is a 4,319 ft peak in the White Mountains.",
+            "mt-pierce": "Mount Pierce is a 4,310 ft peak in the Presidential Range.",
+            "north-kinsman": "North Kinsman Mountain is a 4,293 ft peak in the Kinsman Range.",
+            "mt-willey": "Mount Willey is a 4,285 ft peak in the Willey Range.",
+            "bondcliff": "Bondcliff is a 4,265 ft peak in the White Mountains.",
+            "zealand-mountain": "Zealand Mountain is a 4,260 ft peak in the White Mountains.",
+            "north-tripyramid": "North Tripyramid is a 4,180 ft peak in the White Mountains.",
+            "mt-cabot": "Mount Cabot is a 4,170 ft peak in the Pilot Range.",
+            "east-osceola": "East Osceola is a 4,156 ft peak in the White Mountains.",
+            "middle-tripyramid": "Middle Tripyramid is a 4,140 ft peak in the White Mountains.",
+            "cannon-mountain": "Cannon Mountain is a 4,100 ft peak in the White Mountains.",
+            "wildcat-d": "Wildcat D is a 4,070 ft peak in the White Mountains.",
+            "mt-hale": "Mount Hale is a 4,054 ft peak in the Twin Range.",
+            "mt-jackson": "Mount Jackson is a 4,052 ft peak in the Presidential Range.",
+            "mt-tom": "Mount Tom is a 4,051 ft peak in the Willey Range.",
+            "mt-moriah": "Mount Moriah is a 4,049 ft peak in the Carter-Moriah Range.",
+            "mt-passaconaway": "Mount Passaconaway is a 4,043 ft peak in the Sandwich Range.",
+            "owls-head": "Owl's Head is a 4,025 ft peak in the White Mountains.",
+            "galehead-mountain": "Galehead Mountain is a 4,024 ft peak in the Twin Range.",
+            "mt-whiteface": "Mount Whiteface is a 4,020 ft peak in the Sandwich Range.",
+            "mt-waumbek": "Mount Waumbek is a 4,006 ft peak in the Pliny Range.",
+            "mt-isolation": "Mount Isolation is a 4,003 ft peak in the Presidential Range.",
+            "mt-tecumseh": "Mount Tecumseh is a 4,003 ft peak in the White Mountains."
+        };
+
+        function showSelectedMountain() {
+            const selectedMountain = document.getElementById("mountainDropdown").value;
+            const mountainDetailsDiv = document.getElementById("mountainDetails");
+
+            if (selectedMountain) {
+                mountainDetailsDiv.textContent = mountainsInfo[selectedMountain];
+            } else {
+                mountainDetailsDiv.textContent = "";
+            }
+        }
+    </script>
+</body>
+</html>
